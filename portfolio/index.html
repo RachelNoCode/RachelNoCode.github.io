@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李方一 - AI内容增长运营作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-bg-secondary: #f5f5f7;
+            --color-text: #1d1d1f;
+            --color-text-secondary: #86868b;
+            --color-accent: #0071e3;
+            --font-primary: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 10rem;
+            --radius: 18px;
+            --radius-sm: 12px;
+            --max-width: 980px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            max-width: 65ch;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-2xl) 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background-color: var(--color-bg-secondary);
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 52px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+            color: var(--color-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            text-decoration: none;
+            color: var(--color-accent);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 52px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border: 1px solid rgba(0, 113, 227, 0.2);
+            border-radius: 100px;
+        }
+
+        .hero h1 {
+            background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            max-width: 640px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.5;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: var(--spacing-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--color-text-secondary);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header p {
+            margin: 0 auto;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--color-text);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+            letter-spacing: -0.03em;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .card {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, #e8e8ed 0%, #f5f5f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .card-content {
+            padding: var(--spacing-md);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Feature Rows */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .feature-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-row.reverse {
+            direction: rtl;
+        }
+
+        .feature-row.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-visual {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 113, 227, 0.05) 0%, transparent 70%);
+        }
+
+        .feature-text h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .feature-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--spacing-sm);
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .experience-header h3 {
+            margin-bottom: 0;
+            font-size: 1.35rem;
+        }
+
+        .experience-company {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        .experience-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        .experience-list li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* CTA / Demo */
+        .demo-container {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius);
+            padding: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .demo-placeholder {
+            background: var(--color-bg);
+            border: 1px dashed rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-sm);
+            padding: var(--spacing-2xl) var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--color-accent);
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(29, 29, 31, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-bg-secondary);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links a {
+            color: var(--color-text);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin: var(--spacing-md) 0;
+        }
+        .flow-item {
+            background: linear-gradient(135deg, var(--color-accent), #42a5f5);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,113,227,0.2);
+        }
+        .flow-arrow {
+            color: var(--color-accent);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .flow-row {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-sm);
+        }
+        .flow-row .flow-item {
+            background: var(--color-bg-secondary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            box-shadow: none;
+            font-size: 0.9rem;
+            min-width: 140px;
+        }
+
+        /* Matrix Grid */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .matrix-card {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            padding: var(--spacing-md);
+            border: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .matrix-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+        .matrix-card .platform {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .matrix-card .name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .matrix-card .meta {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .matrix-card .stat {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        /* Content Case Cards */
+        .content-case {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .content-case:hover {
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+        .content-case-header {
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+        }
+        .content-case .platform-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--spacing-xs);
+        }
+        .content-case h3 {
+            font-size: 1.15rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        .content-case .metrics {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .content-case .metrics span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .content-case .cover {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: var(--color-bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .content-case .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .content-case .body {
+            padding: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .content-case .review {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--color-bg-secondary);
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .content-case .review strong {
+            color: var(--color-text);
+        }
+
+        /* AI Flow */
+        .ai-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            margin: var(--spacing-lg) 0;
+        }
+        .ai-flow-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .ai-flow-box {
+            background: var(--color-bg);
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .ai-flow-box.filled {
+            background: var(--color-accent);
+            color: white;
+        }
+        .ai-flow-plus {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        .ai-flow-arrow {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin: 4px 0;
+        }
+
+        /* Small portrait carousel for 4-account grid */
+        .carousel.portrait.small {
+            max-width: 240px;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .carousel.portrait.small .carousel-slide {
+            height: 426px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: transparent;
+            min-width: 100%;
+            margin-right: 0;
+        }
+
+        .carousel.portrait.small .carousel-slide img {
+            border-radius: var(--radius-sm);
+        }
+
+        /* 4-column hit content grid */
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .hit-account {
+            text-align: center;
+        }
+
+        .hit-account h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .hit-account .hit-meta {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .carousel.portrait.small {
+                max-width: 100%;
+            }
+            .nav-links {
+                display: none;
+            }
+
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: calc(52px + var(--spacing-2xl)) 0 var(--spacing-2xl);
+            }
+
+            .scroll-hint {
+                display: none;
+            }
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--radius);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 420px;
+            background: linear-gradient(135deg, #e8e8ed 0%, #f0f0f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-text);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            z-index: 10;
+            opacity: 0;
+        }
+
+        .carousel:hover .carousel-btn {
+            opacity: 1;
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-bg);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-prev { left: var(--spacing-sm); }
+        .carousel-next { right: var(--spacing-sm); }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            position: absolute;
+            bottom: var(--spacing-sm);
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--color-bg);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Card carousel variant */
+        .carousel-slide.card-carousel {
+            height: 320px;
+        }
+
+        /* Portrait carousel (9:16 phone mockup) */
+        .carousel.portrait {
+            max-width: 300px;
+            margin: 0 auto;
+            border-radius: 0;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .carousel.portrait .carousel-slide {
+            height: 520px;
+            border-radius: var(--radius);
+            background: transparent;
+            border: none;
+            min-width: 100%;
+            margin-right: 8px;
+        }
+
+        .carousel.portrait .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius);
+        }
+
+        /* Accordion for text scripts */
+        .accordion-item {
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            cursor: pointer;
+            background: var(--color-bg);
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: var(--color-bg-secondary);
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .accordion-header .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--color-accent);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 2000px;
+        }
+
+        .accordion-content {
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .accordion-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .accordion-content::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.15);
+            border-radius: 3px;
+        }
+
+        .accordion-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.025;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <div class="nav-logo">李方一</div>
+            <ul class="nav-links">
+                <li><a href="#experience">工作经历</a></li>
+                <li><a href="#wenyou">文游作品</a></li>
+                <li><a href="#content">内容案例</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="fade-up">
+                <div class="hero-label">李方一 · AI内容增长运营</div>
+                <h1>内容驱动增长<br>AI赋能运营</h1>
+                <p class="hero-subtitle">2年+用户增长与内容运营经验，擅长AI产品账号矩阵搭建、爆款内容创作与私域引流，兼具数据思维与创作能力</p>
+            </div>
+            <div class="scroll-hint fade-up stagger-2">
+                <span>向下滚动</span>
+                <svg viewBox="0 0 24 24"><path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="stats">
+                <div class="fade-up">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">运营账号矩阵</div>
+                </div>
+                <div class="fade-up stagger-1">
+                    <div class="stat-number">400+</div>
+                    <div class="stat-label">合作创作者</div>
+                </div>
+                <div class="fade-up stagger-2">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">爆款内容</div>
+                </div>
+                <div class="fade-up stagger-3">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">私域引流用户</div>
+                </div>
+                <div class="fade-up stagger-4">
+                    <div class="stat-number">23.9%</div>
+                    <div class="stat-label">DAU增长</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>工作经历</h2>
+                <p>从百度用户增长到秘塔AI内容运营，数据驱动与内容创作双线并行</p>
+            </div>
+
+            <!-- 秘塔 -->
+            <div class="experience-item fade-up">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">北京秘塔网络科技有限公司 · AI内容增长运营</div>
+                    </div>
+                    <span class="experience-date">2025.03 — 至今</span>
+                </div>
+                <ul class="experience-list">
+                    <li><strong>账号矩阵增长：</strong>从0到1搭建并运营小红书、抖音新媒体账号矩阵，负责<strong>6个账号</strong>运营；通过多账号测试建立日均6篇的稳定更新机制，推动<strong>2个账号单月涨粉各1000+</strong></li>
+                    <li><strong>爆款内容沉淀：</strong>针对AI文游用户兴趣分散、内容转化链路不稳定的问题，拆解标题结构、情绪表达、评论反馈与传播路径，通过AI沉淀选题库和内容模板，产出<strong>爆款笔记20+篇，单篇互动量最高2000+</strong></li>
+                    <li><strong>私域引流运营：</strong>围绕内容钩子、评论区互动、私信话术、主页引导及社群承接链路设计引流路径，结合新媒体账号矩阵分发与私域SOP运营，推动<strong>私域引流累计2000+人</strong></li>
+                    <li><strong>AI Workflow搭建：</strong>使用ChatGPT、Opencode等工具搭建AI辅助内容生产流程，覆盖新媒体平台数据统计、热点抓取、选题生成、文案生成、人工优化与自动发布测试等环节</li>
+                    <li><strong>AI Skill开发：</strong>自建文游方向AI Skill辅助内容创作，形成"AI生成+人工优化+矩阵测试"的生产方式</li>
+                    <li><strong>产品Demo验证：</strong>独立完成<strong>AI文游抽卡网页Demo</strong>，验证AI内容生产与轻量互动产品结合的可行性</li>
+                </ul>
+            </div>
+
+            <!-- 百度 -->
+            <div class="experience-item fade-up stagger-1">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">百度在线网络技术（北京）有限公司 · 飞桨星河社区用户增长运营</div>
+                    </div>
+                    <span class="experience-date">2023.11 — 2025.01</span>
+                </div>
+                <ul class="experience-list">
+                    <li><strong>平台增长策略：</strong>面向平台的文心智能体互动场景，负责DAU增长相关运营；基于目标用户Query、流量热词和搜索趋势制定内容供给与增长策略，<strong>周均挖掘1W+热词，推动2024年Q1 DAU增长23.9%</strong></li>
+                    <li><strong>开发者增长：</strong>基于用户调研与行为数据分析，围绕用户生命周期，针对新用户群体设计AARRR运营策略，协同产品、设计、技术上线新用户地图落地页，<strong>累计拉新10W+，最终转化率8%</strong>；打通用户私域运营路径，搭建企业微信私域SOP，覆盖获客、留存、促活与触达，<strong>累计留存转化2000+位开发者用户</strong></li>
+                    <li><strong>活动增长与转化：</strong>基于用户行为数据设计线上活动路径，负责"星河起航：开发者暑期深潜计划"等增长活动，带动<strong>新增学习人数提升21.4%、项目实操数据提升13.93%</strong>；运营社区六周年开发者训练营，活动页面<strong>PV/UV周均1W+，报名2000+，沉淀私域社群1200+人</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文游作品 -->
+    <section class="section section-alt" id="wenyou">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>文游运营作品</h2>
+                <p>账号运营、内容创作、剧本编写与互动产品Demo全链路</p>
+            </div>
+
+            <!-- 文游账号运营 -->
+            <div class="feature-row fade-up">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="自媒体账号/微信图片_20260604215959_17.png" alt="自媒体账号截图1"></div>
+                        <div class="carousel-slide"><img src="自媒体账号/微信图片_20260604215959_18.png" alt="自媒体账号截图2"></div>
+                        <div class="carousel-slide"><img src="自媒体账号/微信图片_20260604215959_19.png" alt="自媒体账号截图3"></div>
+                    </div>
+                    <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                    <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="feature-text">
+                    <span class="card-tag">账号运营 · 小红书/抖音</span>
+                    <h3>AI文游账号矩阵运营</h3>
+                    <p>搭建6个文游方向新媒体账号，覆盖AI文游推荐、剧本分享、素人体验、产品场景演示等内容维度。通过多账号A/B测试验证选题模型，建立日均6篇的稳定产出机制，2个账号实现单月涨粉1000+。</p>
+                    <div style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--color-text); font-weight: 600;">优秀账号指路：</div>
+                    <div class="feature-meta" style="margin-top: var(--spacing-xs);">
+                        <span><a href="https://www.xiaohongshu.com/user/profile/69ad6d5a00000000330284dd?xsec_token=YBlJWkdTMZDY57JNVeMIWZjzZlMWVc-EYV-w1G_0DYWVk=&xsec_source=app_share&xhsshare=WeixinSession&appuid=5ed9dabd00000000010023f9&apptime=1780581723&share_id=a98c4f6d3661446f85e31b2d74c25318&scene=1&wechatWid=38e5e2115aed01f250729be5eab472a8&wechatOrigin=menu" target="_blank">大吃特吃好爱吃</a></span>
+                        <span><a href="https://www.xiaohongshu.com/user/profile/63e4a8a2000000002702b262?xsec_token=YBLhe4x_jPIl1KK3kkQJp9C1Lv2t_1y9q0_xyQXT3ieow=&xsec_source=app_share&xhsshare=WeixinSession&appuid=5ed9dabd00000000010023f9&apptime=1780581734&share_id=4df0de64b9744ac799b89f71a5da725a&scene=1&wechatWid=38e5e2115aed01f250729be5eab472a8&wechatOrigin=menu" target="_blank">到处偷吃冠军</a></span>
+                        <span><a href="https://v.douyin.com/yHhbQLvuARU/" target="_blank">都到碗里来</a></span>
+                    </div>
+                    <div style="margin-top: var(--spacing-xs); font-size: 0.75rem; color: var(--color-text-secondary);">因公司业务方向调整，账号已停更一个月</div>
+                </div>
+            </div>
+
+            <!-- 封面图片 -->
+            <div class="feature-row reverse fade-up stagger-1">
+                <div class="carousel portrait">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="文游视觉设计/jimeng-2026-03-12-5022-生成一个爱豆选秀模拟器海报，少女风格，日系元气选秀海报，明亮浅色系，阳光少女站在....jpeg" alt="爱豆选秀模拟器海报"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/jimeng-2026-03-12-9367-韩漫都市华丽画风，生成海报封面：生成一个美艳御姐，周旋于三个男人之间——温润如玉....jpeg" alt="韩漫都市海报"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/jimeng-2026-03-13-9044-水彩，工笔，中式意境，minimalism, 中国宋朝古代，深宅大院，一位年轻美....jpeg" alt="水彩中式意境海报"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/jimeng-2026-03-17-5185-图片风格为印象派,印象派，梵高风格的油画，笔触明显。图片风格为国风画，敦煌壁画风....jpeg" alt="印象派国风海报"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/jimeng-2026-03-18-2014-古典中世纪欧洲油画，细腻的笔触，高清，水润质感，厚重的质感。端坐在古堡中王座上的....jpeg" alt="古典中世纪油画海报"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/微信图片_20260604215055_13.jpg" alt="文游视觉设计6"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/微信图片_20260604215055_14.jpg" alt="文游视觉设计7"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/微信图片_20260604215055_15.jpg" alt="文游视觉设计8"></div>
+                        <div class="carousel-slide"><img src="文游视觉设计/微信图片_20260604215055_16.jpg" alt="文游视觉设计9"></div>
+                    </div>
+                    <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                    <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="feature-text">
+                    <span class="card-tag">视觉设计 · 封面/海报</span>
+                    <h3>文游内容视觉设计</h3>
+                    <p>独立完成文游推广封面等视觉物料。熟悉小红书/抖音平台封面逻辑，擅长用视觉钩子提升点击率。工具：即梦。</p>
+                </div>
+            </div>
+
+            <!-- 文游剧本 -->
+            <div style="margin-top: var(--spacing-2xl);">
+                <div class="section-header fade-up">
+                    <h3 style="font-size: 1.5rem;">原创文游剧本</h3>
+                    <p>点击剧本名称查看完整内容</p>
+                </div>
+                <div class="accordion-list">
+                    <div class="accordion-item fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div>
+                                <span class="card-tag">娱乐圈 · 双顶流 · 100回合</span>
+                                <h3>入戏太深｜双顶流死对头×假戏真做</h3>
+                            </div>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                顶流影帝（表面高冷毒舌·内里深情隐忍）× 顶流影后（表面傲娇锋芒·内里柔软细腻），双顶流死对头+合作拍戏+戏里戏外真假难辨+片场暧昧+舆论风暴+从互怼到沦陷。共100回合，四章递进。
+                                <div class="accordion-meta">
+                                    <a href="剧本-入戏太深.html" target="_blank">查看完整剧本 →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item fade-up stagger-1">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div>
+                                <span class="card-tag">西幻 · 神明堕落 · 100回合</span>
+                                <h3>堕神之宴｜光明圣子×魔族穿越者</h3>
+                            </div>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                光明圣子（纯洁神明·为爱堕落）× 魔族穿越者（任务驱动·理智沉沦），西幻背景+攻略系统+神明拉下神坛+圣洁与欲望的撕扯+反转占有。共100回合，四章递进。
+                                <div class="accordion-meta">
+                                    <a href="剧本-堕神之宴.html" target="_blank">查看完整剧本 →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div>
+                                <span class="card-tag">古代架空 · 边疆恋歌 · 50回合</span>
+                                <h3>少年将军·边疆少女救治线</h3>
+                            </div>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                大梁最年轻骠骑将军 × 塞外边疆药草铺少女（胡汉混血），耿直直球+身份鸿沟+日久生情+救命之恩。50回合，四阶段递进。
+                                <div class="accordion-meta">
+                                    <a href="剧本-少年将军.html" target="_blank">查看完整剧本 →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item fade-up stagger-1">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div>
+                                <span class="card-tag">现代都市 · 禁忌救赎 · 100回合</span>
+                                <h3>深渊有光｜伪骨科辍学牛郎</h3>
+                            </div>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                辍学供学的"脏"哥哥（24岁·牛郎·极度自卑）× 依赖成疾的妹妹（18岁·高三·只爱他），伪骨科+父母双亡+出租屋相依为命，他在深渊里托举她，她在光明里等他。共100回合。
+                                <div class="accordion-meta">
+                                    <a href="剧本-深渊有光.html" target="_blank">查看完整剧本 →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文游Demo -->
+            <div style="margin-top: var(--spacing-2xl);">
+                <div class="demo-container fade-up">
+                    <h3 style="margin-bottom: var(--spacing-sm); font-size: 1.5rem;">AI文游抽卡网页 Demo</h3>
+                    <p style="margin: 0 auto var(--spacing-lg); max-width: 520px;">独立完成的轻量互动产品Demo，验证AI内容生产与文游玩法结合的可行性。可作为作品集技术能力补充展示。</p>
+                    <div class="demo-placeholder" style="margin-bottom: var(--spacing-md);">
+                        [Demo 截图 / 录屏嵌入]
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="#" class="btn">查看 Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 内容案例 -->
+    <section class="section section-alt" id="content">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>内容案例</h2>
+                <p>小红书爆文实战：从封面设计、标题打磨到数据复盘的全链路</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="content-case fade-up">
+                    <div class="cover">
+                        <img src="案例分析1.png" alt="小红书文游种草案例">
+                    </div>
+                    <div class="content-case-header">
+                        <span class="platform-tag">小红书 · 文游种草</span>
+                        <h3>这才是女A男O的天花板！！😭</h3>
+                    </div>
+                    <div class="metrics">
+                        <span>👍 点赞 29</span>
+                        <span>⭐ 收藏 6</span>
+                        <span>💬 评论 6</span>
+                    </div>
+                    <div class="body">
+                        <strong>Hook：</strong>"昨晚玩了个女强文游，现在整个人就是上头"——用情绪极强的个人体验开场，降低广告感。<br><br>
+                        <strong>角色设定：</strong>女主（26岁萧家主，五品武者，雷厉风行）+ 男主（22岁入赘书生沈知遥，纯情小狗）形成极致反差。<br><br>
+                        <strong>情感共鸣：</strong>用大量生活细节（"饭菜永远热在锅里""连你踢被子他都会一次次拉回来"）唤醒用户对"理想型伴侣"的想象。<br><br>
+                        <strong>CTA：</strong>"想体验纯情老公的快乐一定要si我"——评论区埋设转化钩子，引导私信。
+                    </div>
+                    <div class="review">
+                        <strong>复盘：</strong>素人口吻+强情绪表达+细节化角色设定，精准击中女频文游核心受众。emoji和口语化表达增强真实感，"女A男O"标签精准匹配圈层流量。结尾CTA自然不突兀，私信转化率可达15%+。
+                    </div>
+                </div>
+
+                <div class="content-case fade-up stagger-1">
+                    <div class="cover">
+                        <img src="案例分析2.png" alt="小红书爆文案例2">
+                    </div>
+                    <div class="content-case-header">
+                        <span class="platform-tag">小红书 · 文游推荐</span>
+                        <h3>此男就这样暗戳戳上位</h3>
+                    </div>
+                    <div class="metrics">
+                        <span>👍 点赞 1,751</span>
+                        <span>⭐ 收藏 828</span>
+                        <span>💬 评论 187</span>
+                    </div>
+                    <div class="body">
+                        <strong>人设钩子：</strong>"阴湿疯批小三上位霸总 × 直球高配得感妹宝"——用"小三上位"制造禁忌感，精准击中女频用户猎奇心理。<br><br>
+                        <strong>经典台词：</strong><br>
+                        "我当小三又怎么样，他本来就配不上你。"<br>
+                        "我伺候得你还不够舒服吗？怎么还想着他？"<br><br>
+                        <strong>角色设定：</strong><br>
+                        男主江烬：33岁CEO，表面温润谦和，内里偏执病态，等了女主四年，家中设有"夏栀房间"贴满偷拍照片。<br>
+                        女主夏栀：24岁运营专员，清艳出尘但神经大条，对感情迟钝克制，直到撞见秘密照片墙。<br><br>
+                        <strong>情绪张力：</strong>用"公事公办的冷淡姿态"与"内里想把她藏起来"的反差，营造极致拉扯感。
+                    </div>
+                    <div class="review">
+                        <strong>复盘：</strong>"小三上位"标签自带话题争议性，评论区互动率极高（187条评论）。用"暗戳戳"等口语化词汇降低推广感，人设拆解清晰（身高/外貌/性格/秘密房间），让用户快速代入。台词极具传播性，收藏率说明用户有反复阅读需求。
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 爆款内容展示 -->
+    <section class="section" id="hits">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>爆款内容展示</h2>
+
+            </div>
+
+            <div class="grid grid-4">
+                <!-- 到处偷吃冠军 -->
+                <div class="hit-account fade-up">
+                    <div class="carousel portrait small">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="自媒体账号/冠军1.jpg" alt="冠军笔记1"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军2.PNG" alt="冠军笔记2"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军3.PNG" alt="冠军笔记3"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军4.PNG" alt="冠军笔记4"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军5.PNG" alt="冠军笔记5"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军6.PNG" alt="冠军笔记6"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军7.PNG" alt="冠军笔记7"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军8.PNG" alt="冠军笔记8"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军9.PNG" alt="冠军笔记9"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/冠军10.PNG" alt="冠军笔记10"></div>
+                        </div>
+                        <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                        <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                    <h4>到处偷吃冠军</h4>
+                </div>
+
+                <!-- 大吃特吃好爱吃 -->
+                <div class="hit-account fade-up stagger-1">
+                    <div class="carousel portrait small">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="自媒体账号/大吃1.PNG" alt="大吃笔记1"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/大吃2.PNG" alt="大吃笔记2"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/大吃3.PNG" alt="大吃笔记3"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/大吃4.PNG" alt="大吃笔记4"></div>
+                        </div>
+                        <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                        <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                    <h4>大吃特吃好爱吃</h4>
+                </div>
+
+                <!-- 卷废了阿橙 -->
+                <div class="hit-account fade-up stagger-2">
+                    <div class="carousel portrait small">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="自媒体账号/橙子1.PNG" alt="橙子笔记1"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/橙子2.PNG" alt="橙子笔记2"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/橙子3.PNG" alt="橙子笔记3"></div>
+                        </div>
+                        <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                        <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                    <h4>卷废了阿橙</h4>
+                </div>
+
+                <!-- 都到碗里来 -->
+                <div class="hit-account fade-up stagger-3">
+                    <div class="carousel portrait small">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="自媒体账号/抖音1.PNG" alt="抖音笔记1"></div>
+                            <div class="carousel-slide"><img src="自媒体账号/抖音2.PNG" alt="抖音笔记2"></div>
+                        </div>
+                        <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
+                        <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                    <h4>都到碗里来</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section class="section section-alt" id="skills">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>技能与工具</h2>
+                <p>AI工具应用、数据分析与内容创作的全栈能力</p>
+            </div>
+
+            <div class="grid">
+                <div class="card fade-up">
+                    <div class="card-content" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md);">
+                        <h3 style="margin-bottom: var(--spacing-sm);">AI 工具应用</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">ChatGPT · Opencode · Codex<br>选题生成 · 文案生产 · 内容优化<br>Workflow搭建 · Vibe Coding</p>
+                    </div>
+                </div>
+
+                <div class="card fade-up stagger-1">
+                    <div class="card-content" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md);">
+                        <h3 style="margin-bottom: var(--spacing-sm);">数据与运营</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">SQL基础查询 · 数据清洗<br>VLOOKUP · AARRR模型<br>用户生命周期 · 私域SOP</p>
+                    </div>
+                </div>
+
+                <div class="card fade-up stagger-2">
+                    <div class="card-content" style="text-align: center; padding: var(--spacing-lg) var(--spacing-md);">
+                        <h3 style="margin-bottom: var(--spacing-sm);">内容创作</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">PS · 剪映 · 可画 · 即梦</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="fade-up"> 李方一 · AI内容增长运营作品集</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-up animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Carousel Logic
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            let current = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentTranslate = 0;
+
+            if (slides.length <= 1) return;
+
+            // Create dots
+            if (dotsContainer) {
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => goTo(i));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function update() {
+                track.style.transform = `translateX(-${current * 100}%)`;
+                if (dotsContainer) {
+                    dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === current);
+                    });
+                }
+            }
+
+            function goTo(index) {
+                current = (index + slides.length) % slides.length;
+                update();
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            // Keyboard navigation
+            carousel.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goTo(current - 1);
+                if (e.key === 'ArrowRight') goTo(current + 1);
+            });
+            carousel.setAttribute('tabindex', '0');
+
+            // Mouse drag support
+            track.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX;
+                track.style.cursor = 'grabbing';
+                track.style.transition = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const diff = e.pageX - startX;
+                currentTranslate = -(current * 100) + (diff / track.offsetWidth * 100);
+                track.style.transform = `translateX(${currentTranslate}%)`;
+            });
+
+            document.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.cursor = 'grab';
+                track.style.transition = '';
+                const diff = e.pageX - startX;
+                if (Math.abs(diff) > 50) {
+                    goTo(current + (diff < 0 ? 1 : -1));
+                } else {
+                    update();
+                }
+            });
+
+            // Touch support
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                track.style.transition = 'none';
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                const diff = e.touches[0].clientX - startX;
+                currentTranslate = -(current * 100) + (diff / track.offsetWidth * 100);
+                track.style.transform = `translateX(${currentTranslate}%)`;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                track.style.transition = '';
+                const diff = e.changedTouches[0].clientX - startX;
+                if (Math.abs(diff) > 50) {
+                    goTo(current + (diff < 0 ? 1 : -1));
+                } else {
+                    update();
+                }
+            });
+        });
+
+        // Accordion toggle
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const body = header.nextElementSibling;
+            const content = body.querySelector('.accordion-content');
+            const isActive = item.classList.contains('active');
+
+            // Close all others
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+                el.querySelector('.accordion-body').style.maxHeight = null;
+            });
+
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+                body.style.maxHeight = content.scrollHeight + 40 + 'px';
+            }
+        }
+    </script>
+
+</body>
+</html>
